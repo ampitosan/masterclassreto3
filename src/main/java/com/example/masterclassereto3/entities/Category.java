@@ -3,36 +3,28 @@ package com.example.masterclassereto3.entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "category")
-public class Category implements Serializable {
 
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCategory;
+    private Integer id;
     private String name;
     private String description;
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "category")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "category")
     @JsonIgnoreProperties("category")
-    private List<Library> libs;
+    private List<Bike> bikes;
 
-
-
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "category")
-    @JsonIgnoreProperties("category")
-    private List<Reservas> reservas;
-
-
-    public Integer getIdCategory() {
-        return idCategory;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdCategory(Integer id) {
-        this.idCategory = id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -51,19 +43,11 @@ public class Category implements Serializable {
         this.description = description;
     }
 
-    public List<Library> getLibs() {
-        return libs;
+    public List<Bike> getBikes() {
+        return bikes;
     }
 
-    public void setLibs(List<Library> libs) {
-        this.libs = libs;
-    }
-
-    public List<Reservas> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(List<Reservas> reservas) {
-        this.reservas = reservas;
+    public void setBikes(List<Bike> bikes) {
+        this.bikes = bikes;
     }
 }
